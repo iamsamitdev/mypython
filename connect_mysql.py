@@ -37,6 +37,7 @@ def insert_data():
         """
         con.execute(sql_cmd)
 
+
 # ดึงข้อมูลออกมาแสดง
 def select_data():
     with pyodbc.connect(con_string) as con:
@@ -45,6 +46,7 @@ def select_data():
         """
         for row in con.execute(sql_cmd):
             print(row)
+
 
 # เรียกใช้งานฟังก์ชันสร้างตาราง
 # create_table()

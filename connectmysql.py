@@ -7,14 +7,14 @@ con_string = 'driver=MySQL ODBC 5.3 Unicode Driver;' \
 
 def create_table():
     with pyodbc.connect(con_string) as con:
-        sql_cmd = """
+        sql_cmd = '''
             create table person(
               id int PRIMARY KEY AUTO_INCREMENT,
               gender char(1),
               weight float,
               height float
             )
-        """
+        '''
         try:
             con.execute(sql_cmd)
         except pyodbc.ProgrammingError:
