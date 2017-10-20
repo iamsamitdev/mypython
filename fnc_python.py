@@ -1,6 +1,7 @@
 # Defining user function
 
 
+data = "Samit"
 def printme(strdata, age="36"):
     "This prints a passed string into this function"
     print(strdata+age)
@@ -11,3 +12,4 @@ def printme(strdata, age="36"):
 # printme("Again second call to the same function")
 
 printme(strdata="Hello friend")
+

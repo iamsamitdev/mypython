@@ -15,5 +15,4 @@ while True:
         continue
 
 print("Aready exit!!!")
-print("OK")
 
