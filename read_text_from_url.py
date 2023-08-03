@@ -18,7 +18,7 @@ def read_from_url2(link):
     with urllib.request.urlopen(link) as f:
         for line in f:
             # print("- {}".format(line))
-            print("- {}".format(line.decode("utf8")), end="")
+            print(f'- {line.decode("utf8")}', end="")
             # print(s)
             # print(type(s))
             # s1 = s.decode("utf8")

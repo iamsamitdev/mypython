@@ -1,38 +1,33 @@
 def demo_reader():
-    f = open("flower.txt")
-    data = f.read()
-    print(data)
-    f.close()
+    with open("flower.txt") as f:
+        data = f.read()
+        print(data)
 
 
 def demo_readline():
-    f = open("flower.txt")
-    data = f.readline()
-    print(data)
-    data2 = f.readline()
-    print(data2)
-    f.close()
+    with open("flower.txt") as f:
+        data = f.readline()
+        print(data)
+        data2 = f.readline()
+        print(data2)
 
 
 def demo_readlines():
-    f = open("flower.txt")
-    data = f.readlines()
-    print(data)
-    f.close()
+    with open("flower.txt") as f:
+        data = f.readlines()
+        print(data)
 
 
 def demo_readline2():
-    f = open("flower.txt")
-    for i in range(3):
-        print(f.readline(), end="")
-    f.close()
+    with open("flower.txt") as f:
+        for _ in range(3):
+            print(f.readline(), end="")
 
 
 def demo_readlines2():
-    f = open("flower.txt")
-    for line in f:
-        print(line.capitalize(), end="")
-    f.close()
+    with open("flower.txt") as f:
+        for line in f:
+            print(line.capitalize(), end="")
 
 
 # demo_reader()

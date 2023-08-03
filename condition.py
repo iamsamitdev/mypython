@@ -15,14 +15,10 @@ elif data <= 0:
     print("Invalid value")
 
 
-# loop while
-count = 1
-while count <= 10:
+for count in range(1, 11):
     if count % 2 == 0:
         print("Good luck")
     else:
         print("Line ", count)
-    count += 1
-
 x = 1
 

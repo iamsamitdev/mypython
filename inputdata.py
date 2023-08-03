@@ -9,7 +9,7 @@ total = data1 + data2
 print(type(data1))
 print(type(total))
 
-print("Summary is %s" % total)
+print(f"Summary is {total}")
 
 status = True
 

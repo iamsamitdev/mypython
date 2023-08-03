@@ -3,14 +3,11 @@ import random
 
 def sum_digit(n):
     s = str(n)
-    t = 0
-    for c in s:
-        t += int(c)
-    return t
+    return sum(int(c) for c in s)
 
 
 def dice():
-    for i in range(10):
+    for _ in range(10):
         n = random.randint(1, 6)
         print(n)
 

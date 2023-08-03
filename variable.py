@@ -4,7 +4,7 @@ print(var1)
 
 print(var1[5])
 print(var2[6])
-print(var1[0:6])
+print(var1[:6])
 print(var1[-1])
 print(var1[:10])
 
@@ -18,17 +18,12 @@ print(อาหารไทย)
 my_list = [1, 2, 3, "Apple", '4', 3.14]
 
 # Empty list
-my_emp_list = []
-
-# Asign value
-my_emp_list.append(100)
-my_emp_list.append("Fruit")
-my_emp_list.append("Food")
+my_emp_list = [100, "Fruit", "Food"]
 
 # my_emp_list.insert('Beer', 2)
 
 # delet member
-del my_emp_list[0:3]
+del my_emp_list[:3]
 # my_emp_list.remove("Fruit")
 
 
@@ -51,10 +46,7 @@ for val in my_list:
 
 print(list1 < list2)
 
-sumdata = 0
-for v in list1:
-    sumdata += v
-
+sumdata = sum(list1)
 print(sumdata)
 
 profile = (("name", "Samit Koyom"), ("Age", "30"), ("Gender", "Male"))
@@ -76,10 +68,7 @@ dict_data = {
 print(dict_data)
 print("My name is ", dict_data['name'])
 
-dict_emp = {}
-
-dict_emp['id'] = 1
-dict_emp['product'] = 'iPhone X'
+dict_emp = {'id': 1, 'product': 'iPhone X'}
 
 print(dict_emp)
 
@@ -95,5 +84,5 @@ print(dict_emp)
 del dict_data['name']
 print(dict_data)
 
-for i in dict_data:
-    print(dict_data[i])
+for value in dict_data.values():
+    print(value)

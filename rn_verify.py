@@ -40,33 +40,27 @@ def md5_G2bin(file_name):
     #print "Calc MD5 for file: " + file_name
     config_FR = '\x01\x06\x63\x6F\x6E\x66\x69\x67'
 
-    # Open,close, read file and calculate MD5 on its contents 
-    file_to_check = open(file_name, "rb")
+    with open(file_name, "rb") as file_to_check:
+        md5 = hashlib.md5()
 
-    md5 = hashlib.md5()
+        # Skip past calibration sector 
+        file_to_check.seek(0x1000)
 
-    # Skip past calibration sector 
-    file_to_check.seek(0x1000)
+            # Read through all sectors
+        for _ in xrange(1,254):
+            data = file_to_check.read(0x1000)
 
-    # Read through all sectors
-    for sect in xrange(1,254): 
+            # Check if @ EOF if so fill with 0xFF
+            if data == '':
+                data = b'\xFF' * 0x1000
+                #print "File has " + str(sect) + " sectors."
 
-        data = file_to_check.read(0x1000)
+            # Check if wifly config file sector 
+            if config_FR in data[7:32]:
+                data = b'\xFF' * 0x1000
+                #print "Found config file in sector: " + str(sect)
 
-        # Check if @ EOF if so fill with 0xFF
-        if data == '':
-            data = b'\xFF' * 0x1000
-            #print "File has " + str(sect) + " sectors."
-
-        # Check if wifly config file sector 
-        if config_FR in data[7:32]:
-            data = b'\xFF' * 0x1000
-            #print "Found config file in sector: " + str(sect)
-
-        md5.update(data)
-
-    # Close the file
-    file_to_check.close()
+            md5.update(data)
 
     return md5.digest()
 
@@ -77,9 +71,8 @@ def md5_G2bin(file_name):
 def get_flash_binfile(tester_ip = TESTER_IP, imagefile = ''):
     ftp = FTP(tester_ip)
     ftp.login()
-    flash_file = open(imagefile, 'wb')
-    ftp.retrbinary('RETR ' + imagefile, flash_file.write)
-    flash_file.close()
+    with open(imagefile, 'wb') as flash_file:
+        ftp.retrbinary(f'RETR {imagefile}', flash_file.write)
     ftp.quit()
 
 
@@ -87,7 +80,7 @@ def get_file(tester_ip = TESTER_IP, imagefile = ''):
     ftp = FTP(tester_ip)
     ftp.login()
     stream = StringIO.StringIO()
-    ftp.retrlines('RETR ' + imagefile,  stream.write)
+    ftp.retrlines(f'RETR {imagefile}', stream.write)
     ftp.quit()
     lines =  stream.getvalue()
     stream.close()
