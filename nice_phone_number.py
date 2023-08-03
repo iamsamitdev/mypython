@@ -12,10 +12,7 @@
 
 
 def sum_phone_digit(phone_number):
-    total = 0
-    for c in phone_number:  # "0813451234"
-        total += int(c)
-    return total
+    return sum(int(c) for c in phone_number)
 
 
 def interpret(number):

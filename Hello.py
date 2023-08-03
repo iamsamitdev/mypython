@@ -30,7 +30,7 @@ y = 5
 print(x, "data\a", y)
 
 Subject = "Python language"
-print("I like to study the %s" % Subject)
+print(f"I like to study the {Subject}")
 print("PI Value is %.2f" % pi)
 
 str_text = "Python language"
